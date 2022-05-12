@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Messages
+from .models import *
 
 
 class MessagesSerializer(serializers.ModelSerializer):
@@ -14,3 +14,10 @@ class MessageCreateSerializer(serializers.ModelSerializer):
         fields = ['user_id', 'message']
 
 
+class MessageUpdateSerializer(serializers.ModelSerializer):
+    message_id = serializers.IntegerField()
+    status = serializers.BooleanField(default=False)
+
+    class Meta:
+        model = Messages
+        fields = ['message_id', 'status']
