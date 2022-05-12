@@ -1,7 +1,7 @@
 from rest_framework import generics
 from rest_framework.response import Response
-
 from .serializers import *
+from .models import BasketTypes
 
 
 class MessagesApiList(generics.ListAPIView):
@@ -19,10 +19,6 @@ class MessageApiUpdate(generics.CreateAPIView):
 
     def post(self, request):
         message = Messages.objects.get(pk=request.data['message_id'])
-        try:
-            status = request.data['status']
-            message.status = 'correct'
-        except:
-            message.status = 'blocked'
+        message.status = BasketTypes.CORRECT.value if request.data.get("status") else BasketTypes.BLOCKED.name
         message.save()
         return Response("ok")
