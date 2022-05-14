@@ -19,6 +19,6 @@ class MessageApiUpdate(generics.CreateAPIView):
 
     def post(self, request):
         message = Messages.objects.get(pk=request.data['message_id'])
-        message.status = BasketTypes.CORRECT.value if request.data.get("status") else BasketTypes.BLOCKED.name
+        message.status = BasketTypes.CORRECT.value if request.data.get('status') else BasketTypes.BLOCKED.name
         message.save()
         return Response("ok")

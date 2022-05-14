@@ -17,4 +17,4 @@ class BasketTypes(BaseEnum):
 class Messages(models.Model):
     user_id = models.IntegerField('User')
     message = models.CharField('Message', max_length=255)
-    status = models.CharField('Status', max_length=255, default=BasketTypes.REVIEW.name)
+    status = models.CharField('Status', max_length=255, default=BasketTypes.REVIEW.value)
