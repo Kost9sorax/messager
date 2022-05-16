@@ -1,7 +1,8 @@
 from rest_framework import generics
+from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
 from .serializers import *
-from .models import BasketTypes
+from .models import StatusTypes
 
 
 class MessagesApiList(generics.ListAPIView):
@@ -18,7 +19,7 @@ class MessageApiUpdate(generics.CreateAPIView):
     queryset = Messages.objects.all()
 
     def post(self, request):
-        message = Messages.objects.get(pk=request.data['message_id'])
-        message.status = BasketTypes.CORRECT.value if request.data.get('status') else BasketTypes.BLOCKED.name
+        message = get_object_or_404(Messages, pk=request.data.get('message_id'))
+        message.status = StatusTypes.CORRECT.value if request.data.get('status') else StatusTypes.BLOCKED.name
         message.save()
         return Response("ok")

@@ -8,7 +8,7 @@ class BaseEnum(Enum):
         return list((x.name, x.value) for x in cls)
 
 
-class BasketTypes(BaseEnum):
+class StatusTypes(BaseEnum):
     REVIEW = 'review'
     CORRECT = 'correct'
     BLOCKED = 'blocked'
@@ -17,4 +17,4 @@ class BasketTypes(BaseEnum):
 class Messages(models.Model):
     user_id = models.IntegerField('User')
     message = models.CharField('Message', max_length=255)
-    status = models.CharField('Status', max_length=255, default=BasketTypes.REVIEW.value)
+    status = models.CharField('Status', max_length=255, default=StatusTypes.REVIEW.value)

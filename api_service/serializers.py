@@ -11,7 +11,8 @@ class MessagesSerializer(serializers.ModelSerializer):
 class MessageCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Messages
-        fields = ['user_id', 'message']
+        read_only_fields = ["status"]
+        fields = '__all__'
 
 
 class MessageUpdateSerializer(serializers.ModelSerializer):
