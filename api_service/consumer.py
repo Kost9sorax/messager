@@ -1,8 +1,9 @@
 from kafka import KafkaConsumer
 
-consumer = KafkaConsumer('topic-name',
-                         group_id='1',
-                         bootstrap_servers=['localhost:9092'])
+consumer = KafkaConsumer('Messages',
+                         bootstrap_servers=['localhost:9092'],
+                         api_version=(3, 1, 1)
+                         )
 
-for msg in consumer:
-    print(msg)
+for i in consumer:
+    print(i.value)
