@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  web:
+    container_name: web_app
+    build: .
+    restart: on-failure
+    volumes:
+      - "./src:/test_messager/src"
+    ports:
+      - "8000:8000"

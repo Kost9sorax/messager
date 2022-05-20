@@ -21,4 +21,4 @@ for msg in consumer:
         payload = dict(message_id=json.loads(msg.value.decode('unicode-escape'))['id'], success=False)
     else:
         payload = dict(message_id=json.loads(msg.value.decode('unicode-escape'))['id'], success=True)
-    requests.post('http://127.0.0.1:8000/api/v1/message_confirmation/', data=payload, headers={'Authorization': f'Bearer {json.loads(msg.value.decode("unicode-escape"))["token"]}'})
+    requests.post(CONFIRMATION_PATH, data=payload, headers={'Authorization': f'Bearer {json.loads(msg.value.decode("unicode-escape"))["token"]}'})
