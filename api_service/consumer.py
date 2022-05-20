@@ -1,7 +1,7 @@
 import json
 import requests
 from kafka import KafkaConsumer
-from messager.settings import CONFIRMATION_PATH
+from messenger.settings import CONFIRMATION_PATH
 
 consumer = KafkaConsumer('Messages',
                          bootstrap_servers=['localhost:9092'],
