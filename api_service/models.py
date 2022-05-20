@@ -17,4 +17,5 @@ class StatusTypes(BaseEnum):
 class Messages(models.Model):
     user_id = models.IntegerField('User')
     message = models.CharField('Message', max_length=255)
-    status = models.CharField('Status', max_length=255, default=StatusTypes.REVIEW.value)
+    token = models.CharField('Token', max_length=500)
+    status = models.CharField('Status', max_length=25, default=StatusTypes.REVIEW.value)
